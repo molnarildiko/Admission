@@ -1,4 +1,7 @@
-﻿namespace Admission
+﻿using System.ComponentModel.Design;
+using System.Linq.Expressions;
+
+namespace Admission
 {
     internal class Program
     {
@@ -105,33 +108,40 @@
                     sw.WriteLine(i.name);
                 }
             }
-
-            Console.WriteLine("Add meg az érkező/távozó személy azonosító számát, akiről szeretnéd tudni, hogy kiment-e ezen a kapun!(id)");
-            foreach (var i in ScanEvents)
+            try
             {
-                Console.WriteLine($"A követkető id-ből választhatsz: {i.id} : {i.name}");
-            }
-
-            Console.WriteLine("Írd ide a számot!");
-
-            int number = int.Parse(Console.ReadLine());
-            
-            Console.WriteLine($"A választott id: {number}");
-
-            foreach (var i in ScanEvents)
-            {
-                if(i.id == number)
+                Console.WriteLine("Add meg az érkező/távozó személy azonosító számát, akiről szeretnéd tudni, hogy kiment-e ezen a kapun!(id)");
+                foreach (var i in ScanEvents)
                 {
-                    Console.WriteLine($"A {i.id} azonosítójú {i.name} nevű személy {i.type} irányban haladt át a kapun.");
+                    Console.WriteLine($"A követkető id-ből választhatsz: {i.id} : {i.name}");
                 }
-                if(i.id != number)
+
+                Console.WriteLine("Írd ide a számot!");
+
+                int number;
+                if (int.TryParse(Console.ReadLine(), out number))
                 {
-                    
+                    Console.WriteLine($"A választott id: {number}");
+
+                    foreach (var i in ScanEvents)
+                    {
+                        if (i.id == number)
+                        {
+                            Console.WriteLine($"A {i.id} azonosítójú {i.name} nevű személy \"{i.type}\" irányban haladt át a kapun.");
+                        }
+                        if (i.id != number)
+                        {
+                        }
+                    }
+                    Console.WriteLine("Ilyen azonosítójú személy ma nem haladt át a kapun.");
                 }
+                else throw new FormatException("Helytelen szám formátum");
             }
-            Console.WriteLine("Ilyen azonosítójú személy ma nem haladt át a kapun.");
-
-
+            catch (Exception e)
+                {
+                    Console.WriteLine($"Hiba történt: {e.Message}");
+                    return;
+                }
 
             int[] db = new int[24];
             foreach (var i in ScanEvents)

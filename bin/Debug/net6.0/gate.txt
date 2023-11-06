@@ -1,0 +1,14 @@
+7;52;Be;13334;Kis Jószi;férfi
+7;53;Be;12345;Nagy Feri;férfi
+7;54;Be;23454;Molnár Kata;nő
+8;12;Be;23456;Nagy Zsuzsa;nő
+10;12;Ki;13424;Kovács Kati;nő
+11;13;Ki;32145;Kis Trea;nonbináris
+11;54;Ki;17865;Kovács Géza;férfi
+13;49;Be;25556;Kovács Etelka;nő
+13;51;Ki;25556;Kovács Etelka;nő
+14;45;Be;15678;Kiss Robi;férfi
+15;34;Ki;12323;Nagy Árpád;férfi
+15;44;Ki;15454;Nagy Gábor;férfi
+15;45;Ki;25678;Nagy Erzsi;nő
+15;55;Ki;35678;Molnár Que;nonbináris
